@@ -1,0 +1,5 @@
+name = "compactation"
+compatibility_date = "2026-11-26"
+
+[assets]
+directory = "./public"

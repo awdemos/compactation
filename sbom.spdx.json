@@ -1,0 +1,506 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "compactation-v0.0.1",
+  "documentNamespace": "https://compactation.dev/spdx/compactation-v0.0.1",
+  "creationInfo": {
+    "created": "2026-11-26T00:00:00Z",
+    "creators": [
+      "Person: Andrew White",
+      "Tool: compactation-release-metadata-0.0.1"
+    ],
+    "licenseListVersion": "3.25"
+  },
+  "documentDescribes": [
+    "SPDXRef-Package-compactation"
+  ],
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-Package-compactation",
+      "name": "compactation",
+      "versionInfo": "0.0.1",
+      "supplier": "Person: Andrew White",
+      "downloadLocation": "https://github.com/awdemos/compactation",
+      "filesAnalyzed": false,
+      "licenseConcluded": "MIT",
+      "licenseDeclared": "MIT",
+      "copyrightText": "Copyright (c) 2026 Andrew White",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:github/awdemos/compactation@0.0.1"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "fileName": "./.gitignore",
+      "SPDXID": "SPDXRef-File-gitignore",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "2beaa8924ba22e618c141d342532ab237e7660016266381e25a994dd5eedd88c"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "Copyright (c) 2026 Andrew White"
+    },
+    {
+      "fileName": "./ADVERSARIAL_REVIEW.md",
+      "SPDXID": "SPDXRef-File-ADVERSARIAL-REVIEW-md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "4aa6c46c6708696cbf331b2c29a0e8a6ebb6592d4ac692ca5dd5f6daca83ef48"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "Copyright (c) 2026 Andrew White"
+    },
+    {
+      "fileName": "./COMPACTATION.md",
+      "SPDXID": "SPDXRef-File-COMPACTATION-md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "9c1039314d931e0681f932e7d445c6c9dbc32a7492bad0c346d43c4cc77ab943"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "Copyright (c) 2026 Andrew White"
+    },
+    {
+      "fileName": "./CONTRIBUTING.md",
+      "SPDXID": "SPDXRef-File-CONTRIBUTING-md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "44f8473a1878a8f3a1181d7834de1c503d99b1950fdfe8335c9870f7df77797b"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "Copyright (c) 2026 Andrew White"
+    },
+    {
+      "fileName": "./LICENSE",
+      "SPDXID": "SPDXRef-File-LICENSE",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "44015a2f28572408fc4f095e56fde4ddc1c361cfc708f9bbf27ddee55f294db1"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "Copyright (c) 2026 Andrew White"
+    },
+    {
+      "fileName": "./README.md",
+      "SPDXID": "SPDXRef-File-README-md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "a1e855484da879b285d00aada233e706ea535f63652b8ccc816d64fe25059239"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "Copyright (c) 2026 Andrew White"
+    },
+    {
+      "fileName": "./SECURITY.md",
+      "SPDXID": "SPDXRef-File-SECURITY-md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "8f4f667ad2b227f03fb572f837ca074b40cafef41542441da0426b991e8ed6dd"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "Copyright (c) 2026 Andrew White"
+    },
+    {
+      "fileName": "./deploy.sh",
+      "SPDXID": "SPDXRef-File-deploy-sh",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "8782f4d465643d56e35cc1ae5448c24714a160329e8282993889ad96936070d2"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "Copyright (c) 2026 Andrew White"
+    },
+    {
+      "fileName": "./docs/DEPLOYMENT.md",
+      "SPDXID": "SPDXRef-File-docs-DEPLOYMENT-md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "7b84db200a26c735dafb8e5ff5d2e9cef9f96b3d63fd89bf57f1636aed4efbd5"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "Copyright (c) 2026 Andrew White"
+    },
+    {
+      "fileName": "./docs/DESIGN.md",
+      "SPDXID": "SPDXRef-File-docs-DESIGN-md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "6cc955c646af45124248de0a109fc1c61aa3351642da2fa06652adc5998fbb09"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "Copyright (c) 2026 Andrew White"
+    },
+    {
+      "fileName": "./docs/TRACEABILITY.md",
+      "SPDXID": "SPDXRef-File-docs-TRACEABILITY-md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "f72e55c3ae65defd8c48539ab9a52e4f4b31eb26ae67770e913823c866636335"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "Copyright (c) 2026 Andrew White"
+    },
+    {
+      "fileName": "./docs/VALIDATION.md",
+      "SPDXID": "SPDXRef-File-docs-VALIDATION-md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "8966fe7b766b09732ba26c8e075abbed6d595311dadfa24478d62e357790b641"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "Copyright (c) 2026 Andrew White"
+    },
+    {
+      "fileName": "./examples/demo.py",
+      "SPDXID": "SPDXRef-File-examples-demo-py",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "bf713180894ddc541d12d28cbc437ffd805513c4b424c25473f5284336f367f9"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "Copyright (c) 2026 Andrew White"
+    },
+    {
+      "fileName": "./examples/noisy-log-policy.json",
+      "SPDXID": "SPDXRef-File-examples-noisy-log-policy-json",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "45c3a2532418f8d19b3fc065fe7ea27107246df7ace6302c352677fbe7c56336"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "Copyright (c) 2026 Andrew White"
+    },
+    {
+      "fileName": "./index.html",
+      "SPDXID": "SPDXRef-File-index-html",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "967c3f58b244247e2ac49c20005637ae7a9cc0d46d877cc35e3614a876bf1a86"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "Copyright (c) 2026 Andrew White"
+    },
+    {
+      "fileName": "./og-image.png",
+      "SPDXID": "SPDXRef-File-og-image-png",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "3fd985836b78bd045afa3529d9becb90124ddef08a74b040709b4e50c8579d39"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "Copyright (c) 2026 Andrew White"
+    },
+    {
+      "fileName": "./package-lock.json",
+      "SPDXID": "SPDXRef-File-package-lock-json",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "bffc19b7871d0c5a7cb3319fcacfcd13b13e40733aff53eaba6dbadb449c6f22"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "Copyright (c) 2026 Andrew White"
+    },
+    {
+      "fileName": "./package.json",
+      "SPDXID": "SPDXRef-File-package-json",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "364212ee917e84b73f888039592b328baf1f34498287de7361131f97f0daebfb"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "Copyright (c) 2026 Andrew White"
+    },
+    {
+      "fileName": "./public/index.html",
+      "SPDXID": "SPDXRef-File-public-index-html",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "967c3f58b244247e2ac49c20005637ae7a9cc0d46d877cc35e3614a876bf1a86"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "Copyright (c) 2026 Andrew White"
+    },
+    {
+      "fileName": "./public/og-image.png",
+      "SPDXID": "SPDXRef-File-public-og-image-png",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "3fd985836b78bd045afa3529d9becb90124ddef08a74b040709b4e50c8579d39"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "Copyright (c) 2026 Andrew White"
+    },
+    {
+      "fileName": "./skill/compactation/SKILL.md",
+      "SPDXID": "SPDXRef-File-skill-compactation-SKILL-md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "05a99cbf6a9d0bc4b2bbcbc6cabb415654d0b50f7297a028392cc4cfcac2e3e0"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "Copyright (c) 2026 Andrew White"
+    },
+    {
+      "fileName": "./skill/compactation/default-protocol.md",
+      "SPDXID": "SPDXRef-File-skill-compactation-default-protocol-md",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "8fcc75263919e969e05e6ed352a3e17a5fdceaa5354adef1d959012de863b82a"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "Copyright (c) 2026 Andrew White"
+    },
+    {
+      "fileName": "./tests/test_compactation.py",
+      "SPDXID": "SPDXRef-File-tests-test-compactation-py",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "cc9b5cfdef5ecf2476b0cf09284409f8abcddf1bd6dabb59f6506e0d58290a41"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "Copyright (c) 2026 Andrew White"
+    },
+    {
+      "fileName": "./tools/compactation.py",
+      "SPDXID": "SPDXRef-File-tools-compactation-py",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "b5c41a3f36693395b4727b2af2d59773dbdb9aef01cf6b03178608b1c663997f"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "Copyright (c) 2026 Andrew White"
+    },
+    {
+      "fileName": "./tools/make_og_image.py",
+      "SPDXID": "SPDXRef-File-tools-make-og-image-py",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "8e5555d88714ddfef5fa0cf2ce6500648cfe355cf44d8ec6af57c1729e49d788"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "Copyright (c) 2026 Andrew White"
+    },
+    {
+      "fileName": "./tools/make_release_metadata.py",
+      "SPDXID": "SPDXRef-File-tools-make-release-metadata-py",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "24bc3f632d60f68380eaa9f077282622c0c5eee89f0d5cfa7941a8e306d7773c"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "Copyright (c) 2026 Andrew White"
+    },
+    {
+      "fileName": "./wrangler.toml",
+      "SPDXID": "SPDXRef-File-wrangler-toml",
+      "checksums": [
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "e9fc30fdf81ed0837fb8c619462fa9eb6c11472c2019cb34d4bb54188bb7e073"
+        }
+      ],
+      "licenseConcluded": "MIT",
+      "copyrightText": "Copyright (c) 2026 Andrew White"
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-Package-compactation"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-compactation",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-File-gitignore"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-compactation",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-File-ADVERSARIAL-REVIEW-md"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-compactation",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-File-COMPACTATION-md"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-compactation",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-File-CONTRIBUTING-md"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-compactation",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-File-LICENSE"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-compactation",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-File-README-md"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-compactation",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-File-SECURITY-md"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-compactation",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-File-deploy-sh"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-compactation",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-File-docs-DEPLOYMENT-md"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-compactation",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-File-docs-DESIGN-md"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-compactation",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-File-docs-TRACEABILITY-md"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-compactation",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-File-docs-VALIDATION-md"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-compactation",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-File-examples-demo-py"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-compactation",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-File-examples-noisy-log-policy-json"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-compactation",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-File-index-html"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-compactation",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-File-og-image-png"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-compactation",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-File-package-lock-json"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-compactation",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-File-package-json"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-compactation",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-File-public-index-html"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-compactation",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-File-public-og-image-png"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-compactation",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-File-skill-compactation-SKILL-md"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-compactation",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-File-skill-compactation-default-protocol-md"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-compactation",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-File-tests-test-compactation-py"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-compactation",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-File-tools-compactation-py"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-compactation",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-File-tools-make-og-image-py"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-compactation",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-File-tools-make-release-metadata-py"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-compactation",
+      "relationshipType": "CONTAINS",
+      "relatedSpdxElement": "SPDXRef-File-wrangler-toml"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+node_modules/
+.wrangler/
+.compactation/
+*.log
+.DS_Store
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+service-account*.json
+__pycache__/
+*.pyc

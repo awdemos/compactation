@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Compactation.md - Evidence-led context strategy for coding agents</title>
+  <meta name="description" content="An open-source standard for assisting agents in managing their compactation strategy with the model or models they are using. Capture before compacting, project with declared losses, verify, and rehydrate before reporting.">
+  <meta name="theme-color" content="#0b1020">
+  <link rel="canonical" href="https://compactation.dev">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://compactation.dev">
+  <meta property="og:title" content="Compactation.md - Evidence-led context strategy for coding agents">
+  <meta property="og:description" content="Compact your context, never the evidence. An open-source standard with a content-addressed ledger, declared losses, and verified rehydration.">
+  <meta property="og:image" content="https://compactation.dev/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Compactation.md - Evidence-led context strategy for coding agents">
+  <meta name="twitter:description" content="Compact your context, never the evidence. An open-source standard with a content-addressed ledger, declared losses, and verified rehydration.">
+  <meta name="twitter:image" content="https://compactation.dev/og-image.png">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1020'/%3E%3Cpath d='M16 18h32M16 32h24M16 46h16' stroke='%236ee7b7' stroke-width='6' stroke-linecap='round'/%3E%3C/svg%3E">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "COMPACTATION.md",
+    "applicationCategory": "DeveloperApplication",
+    "description": "An open-source standard for assisting agents in managing their compactation strategy with the model or models they are using.",
+    "url": "https://compactation.dev",
+    "codeRepository": "https://github.com/awdemos/compactation",
+    "license": "https://github.com/awdemos/compactation/blob/main/LICENSE",
+    "softwareVersion": "0.0.1",
+    "author": { "@type": "Person", "name": "Andrew White" },
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121a30;
+      --panel-2: #18223c;
+      --text: #eef3ff;
+      --muted: #a9b6d4;
+      --accent: #6ee7b7;
+      --accent-2: #8ab4ff;
+      --warn: #ffcf70;
+      --danger: #ff8f8f;
+      --line: #2a3554;
+      --radius: 14px;
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    a { color: var(--accent-2); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+    a:hover { color: var(--accent); }
+    :focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+    .skip {
+      position: absolute; left: -999px; top: 0; padding: 10px 16px;
+      background: var(--accent); color: #06131a; z-index: 20; font-weight: 700;
+    }
+    .skip:focus { left: 12px; top: 12px; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 22px; }
+    header {
+      border-bottom: 1px solid var(--line); position: sticky; top: 0;
+      background: rgba(11,16,32,.94); backdrop-filter: blur(8px); z-index: 10;
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; gap: 18px; min-height: 66px; }
+    .brand { display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-weight: 800; letter-spacing: -.02em; }
+    .mark {
+      width: 30px; height: 30px; border-radius: 8px; background: linear-gradient(145deg, var(--accent), var(--accent-2));
+      display: grid; place-items: center; color: #081426; font-size: 13px; font-weight: 900;
+    }
+    nav ul { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+    nav a { color: var(--muted); text-decoration: none; font-size: 14px; }
+    nav a:hover { color: var(--accent); }
+    .hero { padding: 74px 0 44px; }
+    .eyebrow { color: var(--accent); font-size: 13px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    h1 { font-size: clamp(2.3rem, 6vw, 4.2rem); line-height: 1.06; letter-spacing: -.04em; margin: 16px 0 20px; max-width: 19ch; }
+    .lede { font-size: clamp(1.05rem, 2vw, 1.3rem); color: var(--muted); max-width: 70ch; margin: 0 0 28px; }
+    .cta { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 11px 18px; border-radius: 10px; text-decoration: none;
+      font-weight: 750; font-size: 15px; border: 1px solid transparent;
+    }
+    .btn-primary { background: var(--accent); color: #07161c; }
+    .btn-primary:hover { background: #9bf3cf; color: #07161c; }
+    .btn-secondary { border-color: var(--line); color: var(--text); background: var(--panel); }
+    .btn-secondary:hover { border-color: var(--accent-2); color: var(--text); }
+    .proof {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px;
+      margin: 42px 0 0; padding: 0; list-style: none;
+    }
+    .proof li { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
+    .proof strong { display: block; color: var(--accent); font-size: .95rem; }
+    .proof span { color: var(--muted); font-size: .88rem; }
+    .terminal {
+      margin: 30px 0 0; background: #050912; border: 1px solid var(--line); border-radius: var(--radius);
+      overflow: hidden; max-width: 100%;
+    }
+    .terminal-top { display: flex; align-items: center; justify-content: space-between; padding: 10px 14px; background: var(--panel-2); }
+    .dots { display: flex; gap: 6px; }
+    .dots i { width: 9px; height: 9px; border-radius: 50%; background: #46557a; display: block; }
+    .terminal button { background: transparent; border: 1px solid var(--line); color: var(--muted); border-radius: 7px; padding: 4px 10px; cursor: pointer; font: inherit; font-size: 12px; }
+    .terminal button:hover { color: var(--accent); border-color: var(--accent); }
+    .terminal code { display: block; padding: 16px; color: #d8e6ff; font: 13.5px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre-wrap; word-break: break-all; }
+    .copy-status { min-height: 20px; padding: 0 16px 10px; color: var(--accent); font-size: 12px; }
+    section { padding: 56px 0; border-top: 1px solid var(--line); }
+    h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); letter-spacing: -.03em; margin: 0 0 12px; line-height: 1.15; }
+    h3 { font-size: 1.05rem; margin: 0 0 8px; }
+    .sub { color: var(--muted); max-width: 76ch; margin: 0 0 30px; }
+    .grid { display: grid; gap: 14px; }
+    .grid.two { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    .grid.three { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
+    .card p { color: var(--muted); margin: 0; font-size: .94rem; }
+    .card .tag { color: var(--accent); font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .flow { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 8px 0 26px; }
+    .flow span { background: var(--panel-2); border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; font: 13px ui-monospace, SFMono-Regular, Menlo, monospace; color: var(--accent); }
+    .flow b { color: var(--muted); font-weight: 400; }
+    .equation { background: #050912; border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 8px; padding: 16px; font: 14px/1.8 ui-monospace, SFMono-Regular, Menlo, monospace; color: #d8e6ff; }
+    .callout { border: 1px solid var(--warn); background: rgba(255,207,112,.07); border-radius: var(--radius); padding: 24px; }
+    .callout h3 { color: var(--warn); }
+    .callout p { color: var(--muted); margin: 0 0 8px; }
+    .num { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 850; color: var(--warn); line-height: 1; letter-spacing: -.04em; }
+    table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+    th, td { text-align: left; padding: 11px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { color: var(--accent); font-size: 12px; text-transform: uppercase; letter-spacing: .07em; }
+    td { color: var(--muted); }
+    td code { color: var(--text); }
+    details { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; margin-bottom: 10px; }
+    summary { cursor: pointer; font-weight: 700; }
+    details p { color: var(--muted); margin: 12px 0 0; }
+    pre { background: #050912; border: 1px solid var(--line); border-radius: 10px; padding: 16px; overflow-x: auto; color: #d8e6ff; font: 13px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    footer { border-top: 1px solid var(--line); padding: 34px 0 50px; color: var(--muted); font-size: .9rem; }
+    footer a { color: var(--accent-2); }
+    .footer-row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    @media (max-width: 700px) {
+      .hero { padding-top: 48px; }
+      nav ul { gap: 12px; }
+      .nav { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      section { padding: 42px 0; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top"><span class="mark">C</span> COMPACTATION.md</a>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#failure">The failure</a></li>
+          <li><a href="#rules">Rules</a></li>
+          <li><a href="#tool">Tool</a></li>
+          <li><a href="#evidence">Evidence</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div id="top" class="wrap hero">
+      <p class="eyebrow">Open-source standard · v0.0.1</p>
+      <h1>Compact the context. Keep the evidence.</h1>
+      <p class="lede">An open-source standard for assisting agents in managing their compactation strategy with the model or models they are using. Capture raw evidence first, derive compact projections with declared losses, verify before use, and rehydrate exact bytes before writing any consequential claim.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://github.com/awdemos/compactation/blob/main/COMPACTATION.md">Read the standard</a>
+        <a class="btn btn-secondary" href="#tool">Try the reference tool</a>
+      </div>
+      <ul class="proof">
+        <li><strong>Content-addressed</strong><span>Record IDs are SHA-256 of exact bytes, never agent-chosen labels.</span></li>
+        <li><strong>Append-only</strong><span>The ledger keeps every earlier event as a prefix. No silent rewrites.</span></li>
+        <li><strong>Coverage balances</strong><span>Captured bytes equal projected bytes plus every declared omission.</span></li>
+        <li><strong>Verified rehydration</strong><span>Report claims cite restored records, or they are UNVERIFIED.</span></li>
+      </ul>
+      <div class="terminal" id="terminal">
+        <div class="terminal-top">
+          <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+          <button type="button" id="copy-btn" aria-label="Copy quickstart command">Copy</button>
+        </div>
+        <code id="cmd">curl -fsSL -O https://raw.githubusercontent.com/awdemos/compactation/v0.0.1/COMPACTATION.md</code>
+        <div class="copy-status" id="copy-status" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <section id="failure">
+      <div class="wrap">
+        <p class="eyebrow">The failure we fixed</p>
+        <h2>A 37 percent saving with no way back</h2>
+        <p class="sub">On 2026-11-25 an agent compacted noisy logs mid-task. Estimated tokens fell by roughly 37 percent. The originals were discarded before the bug was fixed. When the full report came due, the compacted text could not stand in for the lines that proved the diagnosis.</p>
+        <div class="grid three">
+          <div class="card"><span class="tag">Step 1</span><h3>Compact</h3><p>Noisy logs became a shorter summary. The estimate looked good and the context pressure dropped.</p></div>
+          <div class="card"><span class="tag">Step 2</span><h3>Discard</h3><p>The source bytes were thrown away. The summary became the only remaining account of the run.</p></div>
+          <div class="card"><span class="tag">Step 3</span><h3>Reconstruct</h3><p>The report needed verbatim evidence. There was no record to restore and no citation to make.</p></div>
+        </div>
+        <div class="callout" style="margin-top:18px">
+          <span class="num">~37%</span>
+          <h3>Expectation, not a measured result</h3>
+          <p>We expect agents using the standard to gain roughly 37 percent better-than-average session-management success. That figure comes from an initial trial with no control group. It is UNVALIDATED and needs more data. See the <a href="https://github.com/awdemos/compactation/blob/main/docs/VALIDATION.md">validation plan</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="rules">
+      <div class="wrap">
+        <p class="eyebrow">The contract</p>
+        <h2>Seven rules, stable across models</h2>
+        <p class="sub">A repo drops COMPACTATION.md at its root, alongside AGENTS.md or CLAUDE.md. Repos may add rules but cannot remove these seven.</p>
+        <div class="grid three">
+          <div class="card"><span class="tag">01</span><h3>Capture before compacting</h3><p>Store immutable, content-addressed bytes before deriving any compact view.</p></div>
+          <div class="card"><span class="tag">02</span><h3>Project, do not rewrite</h3><p>Active context is a cache. A projection has references, coverage, and declared losses.</p></div>
+          <div class="card"><span class="tag">03</span><h3>No silent loss</h3><p>Every omission names a policy, a reason, and the records it affects. The rest are retained.</p></div>
+          <div class="card"><span class="tag">04</span><h3>Rehydrate before deciding</h3><p>Fixes, gates, and reports cite restored records. A summary alone is UNVERIFIED.</p></div>
+          <div class="card"><span class="tag">05</span><h3>Verify before use</h3><p>Recompute hashes, resolve references, balance coverage. Invalidate on mismatch.</p></div>
+          <div class="card"><span class="tag">06</span><h3>Budget and exit</h3><p>Exit on green, an enforced budget, or a stall. Escalate a stall to the human.</p></div>
+          <div class="card"><span class="tag">07</span><h3>Report with provenance</h3><p>Show the ledger, the estimator, the omissions, and the validation status of every figure.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <p class="eyebrow">How it works</p>
+        <h2>An evidence chain you can check</h2>
+        <p class="sub">The operations contract is small enough to implement in an afternoon and strict enough to audit.</p>
+        <div class="flow" aria-label="Operations flow">
+          <span>capture</span><b aria-hidden="true">&#8594;</b><span>ledger</span><b aria-hidden="true">&#8594;</b><span>project</span><b aria-hidden="true">&#8594;</b><span>verify</span><b aria-hidden="true">&#8594;</b><span>retrieve</span><b aria-hidden="true">&#8594;</b><span>report</span>
+        </div>
+        <div class="equation">captured bytes = projected excerpt bytes + dedupe + bounds + redaction + decode + drop + integrity bytes</div>
+        <div class="grid two" style="margin-top:20px">
+          <div class="card"><h3>Built for the models you use</h3><p>Each projection records the model family, estimator, and policy. Provider compaction is logged as context state, not treated as an evidence operation. After a model switch, projections are re-derived and references verified.</p></div>
+          <div class="card"><h3>Honest about what it cannot do</h3><p>Markdown does not enforce budgets, triggers, or kill switches. Those are runtime capabilities. If a mechanism is missing, the agent discloses it and reduces the autonomy it claims.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tool">
+      <div class="wrap">
+        <p class="eyebrow">Reference implementation</p>
+        <h2>A ledger, not string surgery</h2>
+        <p class="sub">The dependency-free Python CLI implements every operation in the contract. It exists because letting agents manage their own memory by manipulating strings is not great either.</p>
+        <pre>capture   python3 tools/compactation.py capture --file noisy.log --kind log
+project   python3 tools/compactation.py project --policy policy.json --out projection.json
+verify    python3 tools/compactation.py verify --projection projection.json
+retrieve  python3 tools/compactation.py retrieve --id &lt;record-id&gt; --out evidence.bin
+report    python3 tools/compactation.py report --projection projection.json --claims claims.json</pre>
+        <table>
+          <thead><tr><th>Guarantee</th><th>Where it is enforced</th></tr></thead>
+          <tbody>
+            <tr><td>Identical bytes make one record</td><td><code>sha256(bytes)</code> is the ID; capture is idempotent</td></tr>
+            <tr><td>Hash failure is an error</td><td><code>retrieve</code> and <code>verify</code> refuse tampered objects</td></tr>
+            <tr><td>Redaction never edits the source</td><td>Policy applies only inside the projection</td></tr>
+            <tr><td>Uncited claim is UNVERIFIED</td><td><code>report</code> validates each claim against the ledger</td></tr>
+            <tr><td>Secrets are not silently stored</td><td>Capture refuses common secret-like patterns without a reason</td></tr>
+          </tbody>
+        </table>
+        <p class="sub" style="margin-top:20px">50 unit tests and an end-to-end noisy-log demo ship with the tool. Token estimates use a named <code>utf8_bytes_over_4</code> heuristic; they are estimates, not tokenizer output.</p>
+      </div>
+    </section>
+
+    <section id="evidence">
+      <div class="wrap">
+        <p class="eyebrow">Evidence and governance</p>
+        <h2>Published like a standard, not a blog post</h2>
+        <div class="grid two">
+          <div class="card"><span class="tag">Traceability</span><h3>Every rule has a destination</h3><p>The traceability matrix maps each contract rule to a CLI command, a skill instruction, or an explicitly external runtime requirement. It also records the 37 percent expectation as unvalidated.</p></div>
+          <div class="card"><span class="tag">Releases</span><h3>Signed tags and checksums</h3><p>Every release is tagged and signed. Verify with <code>git tag -v v0.0.1</code>. SHA-256 checksums for tracked files are in the changelog, and an SPDX SBOM is published.</p></div>
+          <div class="card"><span class="tag">Review</span><h3>Independent challenges</h3><p>This repo holds itself to ADVERSARIAL_REVIEW.md: one lens at a time, evidence-backed findings, and a challenger that disputes weak ones.</p></div>
+          <div class="card"><span class="tag">Contribution</span><h3>Issues first, verified commits</h3><p>Policy requires every PR to link an accepted issue, every commit on main to be signed, and every merge to have NCO signoff from a reviewer who did not author the change. This solo-authored repository has not yet had an independent signoff; the limitation is recorded in the repo.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap">
+        <p class="eyebrow">FAQ</p>
+        <h2>Common questions</h2>
+        <details><summary>Is this the same as my runtime's automatic compaction?</summary><p>No. Provider compaction is an external context-window event. This standard governs the agent's own evidence lifecycle: what is captured, how a projection is derived, and what must be rehydrated before a claim is made. The two can interact, but they are not the same operation.</p></details>
+        <details><summary>Does it really give 37 percent better session success?</summary><p>That is an expectation from an initial trial, not a measured result. There was no control group. The claim is marked UNVALIDATED everywhere it appears, and the validation plan defines the experiment that would settle it.</p></details>
+        <details><summary>Why not just let the agent rewrite its notes?</summary><p>Because a rewritten note is a hypothesis about the evidence, not the evidence. It cannot prove what it omitted, cannot be checked against the original, and cannot be trusted after a model switch. The standard keeps the original and makes the derived view auditable.</p></details>
+        <details><summary>Do I need the Python tool to follow the standard?</summary><p>No. The skill instructs the agent directly. Without the tool, storage and hashing are session-only and must be disclosed. The tool supplies durable, deterministic operations; it does not supply enforced budgets or triggers.</p></details>
+        <details><summary>What about secrets in logs?</summary><p>The CLI refuses capture when it detects common secret-like patterns unless an explicit reason is given, and default redaction replaces synthetic tokens inside projections. Stored bytes are never rewritten by a policy. Real credentials do not belong in public fixtures or issues.</p></details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <div>COMPACTATION.md v0.0.1 · MIT licensed · NCO of record: Andrew White</div>
+      <div><a href="https://github.com/awdemos/compactation">GitHub</a> · <a href="https://github.com/awdemos/compactation/blob/main/docs/VALIDATION.md">Validation plan</a> · <a href="https://adversarial-review.com">Adversarial review</a></div>
+    </div>
+  </footer>
+
+  <script>
+    const button = document.getElementById('copy-btn');
+    const status = document.getElementById('copy-status');
+    const command = document.getElementById('cmd');
+    button.addEventListener('click', async () => {
+      const text = command.textContent.trim();
+      try {
+        await navigator.clipboard.writeText(text);
+        status.textContent = 'Copied. Replace the tag only when upgrading deliberately.';
+      } catch (error) {
+        status.textContent = 'Copy failed. Select the command and copy manually.';
+      }
+    });
+  </script>
+</body>
+</html>

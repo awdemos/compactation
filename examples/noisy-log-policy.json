@@ -1,0 +1,15 @@
+{
+  "schema": "compactation/policy/0.0.1",
+  "name": "noisy-log-demo",
+  "keep_ids": [],
+  "drop_kinds": ["metric"],
+  "redact": [
+    {
+      "pattern": "DEMO_TOKEN_[A-Za-z0-9]+",
+      "replacement": "[REDACTED:demo-token]"
+    }
+  ],
+  "dedupe": true,
+  "max_chars_per_record": 600,
+  "max_chars_total": 5000
+}

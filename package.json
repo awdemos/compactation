@@ -1,0 +1,30 @@
+{
+  "name": "compactation.dev",
+  "version": "0.0.1",
+  "description": "An open-source standard for assisting agents in managing their compactation strategy with the model or models they are using.",
+  "scripts": {
+    "test": "python3 -m unittest discover -s tests",
+    "demo": "python3 examples/demo.py",
+    "deploy": "cp index.html public/index.html && cp og-image.png public/og-image.png && npx wrangler deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/awdemos/compactation.git"
+  },
+  "keywords": [
+    "agents",
+    "context",
+    "compaction",
+    "provenance",
+    "open-standard"
+  ],
+  "license": "MIT",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/awdemos/compactation/issues"
+  },
+  "homepage": "https://compactation.dev",
+  "devDependencies": {
+    "wrangler": "4.166.0"
+  }
+}
