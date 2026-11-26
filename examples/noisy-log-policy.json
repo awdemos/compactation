@@ -1,5 +1,5 @@
 {
-  "schema": "compactation/policy/0.0.1",
+  "schema": "compactation/policy/0.0.2",
   "name": "noisy-log-demo",
   "keep_ids": [],
   "drop_kinds": ["metric"],

@@ -38,7 +38,7 @@ class CompactationTests(unittest.TestCase):
 
     def policy(self, **overrides: object) -> dict[str, object]:
         value: dict[str, object] = {
-            "schema": "compactation/policy/0.0.1",
+            "schema": "compactation/policy/0.0.2",
             "name": "test-policy",
             "keep_ids": [],
             "drop_kinds": [],
@@ -276,7 +276,44 @@ class CompactationTests(unittest.TestCase):
             [sys.executable, str(TOOL), "--version"], capture_output=True, check=False
         )
         self.assertEqual(result.returncode, 0)
-        self.assertIn(b"0.0.1", result.stdout)
+        self.assertIn(b"0.0.2", result.stdout)
+
+    def test_legacy_policy_schema_is_accepted(self) -> None:
+        record_id = self._record(b"legacy policy evidence\n")
+        self.policy(
+            schema="compactation/policy/0.0.1", keep_ids=[record_id]
+        )
+        result = self.run_cli(
+            "project", "--policy", str(self.root / "policy.json"), "--model", "test-model"
+        )
+        self.assertEqual(result.returncode, 0)
+        projection = json.loads(result.stdout)
+        self.assertEqual(
+            projection["core"]["policy_object"]["schema"], "compactation/policy/0.0.1"
+        )
+
+        projection_path = self.root / "legacy-projection.json"
+        projection_path.write_text(json.dumps(projection), encoding="utf-8")
+        verified = self.run_cli("verify", "--projection", str(projection_path))
+        self.assertEqual(verified.returncode, 0)
+        self.assertTrue(json.loads(verified.stdout)["pass"])
+
+        claims_path = self.root / "legacy-claims.json"
+        claims_path.write_text(
+            json.dumps([{"claim": "legacy policy evidence is cited", "record_ids": [record_id]}]),
+            encoding="utf-8",
+        )
+        reported = self.run_cli(
+            "report", "--projection", str(projection_path), "--claims", str(claims_path)
+        )
+        self.assertEqual(reported.returncode, 0)
+        self.assertIn(record_id[:16].encode(), reported.stdout)
+
+    def test_projection_uses_current_schema(self) -> None:
+        self._record(b"current schema evidence\n")
+        projection, code = self.project()
+        self.assertEqual(code, 0)
+        self.assertEqual(projection["schema"], "compactation/0.0.2")
 
 
     def _record(self, data: bytes, kind: str = "log") -> str:

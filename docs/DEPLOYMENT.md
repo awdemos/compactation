@@ -18,6 +18,18 @@ Pages-style static hosting pattern used by the sibling projects.
 
 ## Deploy
 
+Before deploying copy that advertises a release, push the signed tag for that
+release and confirm it verifies. For v0.0.2:
+
+```sh
+git tag -v v0.0.2
+git push origin v0.0.2
+```
+
+If either command fails, stop. Deploying first would publish a quickstart URL
+that returns 404 and a tag verification command that cannot succeed. After the
+tag is live, deploy:
+
 ```sh
 ./deploy.sh
 ```

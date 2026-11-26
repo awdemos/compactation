@@ -1,20 +1,20 @@
 #!/usr/bin/env python3
-"""Generate the SPDX SBOM and the release checksum block for v0.0.1.
+"""Generate the SPDX SBOM and the current release checksum block.
 
 Dev-only script. It excludes itself, the changelog, and the SBOM from checksums
-so no file contains its own hash. This is a reset release: no earlier sections
-are carried forward.
+so no file contains its own hash. Earlier changelog sections are preserved.
 """
 
 from __future__ import annotations
 
 import hashlib
 import json
+import re
 import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "0.0.1"
+VERSION = "0.0.2"
 CREATED = "2026-11-26T00:00:00Z"
 EXCLUDED = {
     "CHANGELOG.md",
@@ -26,20 +26,14 @@ EXCLUDED = {
     "__pycache__",
 }
 RELEASE_NOTES = [
-    "- Reset release after an adversarial review; withdrawn draft artifacts are excluded.",
-    "- Refuse store-internal `--out` targets for `project`, `retrieve`, and `report`.",
-    "- Broaden secret detection to common credential formats, encodings, and metadata.",
-    "- Re-derive projections from store bytes during `verify` so hand-edited fields fail.",
-    "- Fix coverage double-counting and classify unbalanced results as stalls.",
-    "- Emit the canonical report shape, byte spans, and declared context budget.",
-    "- Tighten secret detection so git SHAs and placeholders are not refused while "
-    "key-name variants, quoted keys, and metadata are covered.",
-    "- Bound redaction regexes against catastrophic backtracking and verify a "
-    "projection before rendering a report from it.",
-    "- Fail closed on malformed ledger events and byte-count mismatches; redact "
-    "secret-like reason, model, and kind metadata.",
-    "- Accept --store on either side of the subcommand; document accepted risks.",
-    "- Correct public version and governance claims; add regression tests.",
+    "- Add `docs/BOUNDEDNESS-PROOF.md`: a short proof that correctness requires "
+    "bounded operations, budget and model scope, and guarded paths.",
+    "- Bump the contract, CLI, example policy, package metadata, and site to v0.0.2; "
+    "the seven rules and operations contract are unchanged.",
+    "- Keep `compactation/policy/0.0.1` policies valid while emitting and "
+    "documenting `compactation/policy/0.0.2`.",
+    "- Add regression tests for legacy policy acceptance and the current projection "
+    "schema; preserve earlier changelog checksum history.",
 ]
 
 
@@ -142,6 +136,18 @@ def make_sbom(files: list[Path]) -> None:
     )
 
 
+def prior_history() -> str:
+    """Return earlier version sections so a patch release keeps checksum history."""
+    path = ROOT / "CHANGELOG.md"
+    if not path.is_file():
+        return ""
+    text = path.read_text(encoding="utf-8")
+    for match in re.finditer(r"(?m)^## \[v(\d+\.\d+\.\d+)\]", text):
+        if match.group(1) != VERSION:
+            return text[match.start():].rstrip() + "\n"
+    return ""
+
+
 def make_changelog(files: list[Path]) -> None:
     lines = [
         "# Changelog",
@@ -176,6 +182,9 @@ def make_changelog(files: list[Path]) -> None:
             "",
         ]
     )
+    history = prior_history()
+    if history:
+        lines.extend([history.rstrip(), ""])
     (ROOT / "CHANGELOG.md").write_text("\n".join(lines), encoding="utf-8")
 
 

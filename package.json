@@ -1,6 +1,6 @@
 {
   "name": "compactation.dev",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An open-source standard for assisting agents in managing their compactation strategy with the model or models they are using.",
   "scripts": {
     "test": "python3 -m unittest discover -s tests",

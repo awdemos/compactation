@@ -1,7 +1,7 @@
 # Compactation: Agent Compaction Strategy Standard
 
-**Version:** 0.0.1
-**Status:** open-source standard, v0.0.1 initial release
+**Version:** 0.0.2
+**Status:** open-source standard, v0.0.2 follow-up release
 **Companion:** `COMPACTATION.md` in the repo root is the agent-facing contract
 derived from this document.
 

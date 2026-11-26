@@ -39,6 +39,7 @@ not claim endorsement by any research paper or industry body.
 | R15 | Byte-accurate spans and bounded redaction | Byte-based span arithmetic; conservative regex subset in `safe_redact_pattern()` and pattern-length checks in `validate_policy()` | Implementation |
 | R16 | Secret hygiene in metadata | `cmd_capture()` scans note, reason, kind, model, and source, then redacts secret-bearing metadata | Implementation |
 | R17 | Verify before reporting | `cmd_report()` re-runs projection verification and refuses identity or derivation failures | Implementation |
+| R18 | Bounded authority, budget, and paths | `docs/BOUNDEDNESS-PROOF.md`; skill proof obligations; runtime boundary in `COMPACTATION.md` | Design proof, not performance evidence |
 
 ## Project choices not dictated by the failure
 
@@ -50,6 +51,7 @@ not claim endorsement by any research paper or industry body.
 | P4 | Token estimate is UTF-8 bytes over 4, always named | Avoids presenting a heuristic as a model tokenizer. |
 | P5 | Uncited claim becomes UNVERIFIED, not an error hidden from the report | Keeps failures visible without letting them masquerade as evidence. |
 | P6 | Secret-like bytes are refused by default | A public standard must not teach agents to store credentials in evidence. |
+| P7 | Bounded operations, budget, and paths are necessary | The proof in `docs/BOUNDEDNESS-PROOF.md` makes each proof obligation depend on an explicit limit. |
 
 ## External and unvalidated claims
 
@@ -83,7 +85,10 @@ The tests prove that the reference implementation follows its own contract:
 hashes verify, ledgers append, coverage balances, and uncited claims are
 labeled. They do not prove improved session outcomes. Measuring benefit requires
 the controlled comparison in `docs/VALIDATION.md`. Until that exists, describe
-the standard as a testable control design, not a proven productivity method.
+the standard as a testable control design, not a proven productivity method. The
+separate proof in `docs/BOUNDEDNESS-PROOF.md` establishes that bounded authority,
+budget, and paths are necessary for the skill's own invariants; it is a design
+proof, not an outcome measurement.
 
 ## Adversarial review reconciliation (second loop)
 
@@ -99,7 +104,7 @@ was reconciled before the `v0.0.1` squash.
 | AR2-R-003 (`--store` after subcommand) | MODIFY, scope widened | Fixed: subparsers accept `--store` via `argparse.SUPPRESS`; docs use the global form. Test added. |
 | AR2-R-004 (coherent ledger rewrite) | ACCEPT MEDIUM | Accepted risk: no external anchor; retained bytes and re-derivation limit the impact. Documented in `docs/DESIGN.md` §10. |
 | AR2-R-005 (stale schema string) | MODIFY to LOW | Fixed string and status wording. |
-| AR2-R-006 (site count drift) | ACCEPT LOW | Fixed to the final 50 tests after regressions were added. |
+| AR2-R-006 (site count drift) | ACCEPT LOW | Fixed to the then-current 50 tests after regressions; v0.0.2 adds two compatibility tests, so the site now reports 52. |
 | C-MISSED-01/02 (key variants, quoted keys) | Confirmed MEDIUM | Fixed with AR2-R-001. |
 | C-MISSED-03/04 (kind, model, reason unscanned) | Confirmed | Fixed: all metadata fields scanned; secret-bearing reason, kind, and model redacted. |
 | C-MISSED-05 (`event.bytes` unchecked) | Confirmed | Fixed: byte-count mismatch becomes `unresolved` and stalls the projection. |
@@ -119,3 +124,28 @@ The independent re-review confirmed the original CRITICAL/HIGH fixes
 canonical report, version reset, governance wording, context budget, protocol
 shape). Its two HIGH objections, over-refusing secret detection and ReDoS, are
 the C-MISSED-01/02 and C-MISSED-09 rows above.
+
+## Adversarial review reconciliation (third loop, v0.0.2)
+
+The third loop reviewed the staged v0.0.2 candidate: R = Basalt, C = Quartz.
+Both instances ran on the same model family (`opencode/big-pickle`); the
+preferred distinct-family independence was not available, so that limitation is
+recorded rather than implied away. R and C exchanged verdicts until stabilized.
+No CRITICAL or HIGH runtime defect was found and all mandated commands passed,
+but R sustained NO-GO until the proof and hygiene items below were fixed. No
+unresolved HIGH or CRITICAL `DISAGREE_CONCERN` remained, so no NCO escalation
+was required.
+
+| Finding | C verdict / R response | Disposition |
+|---------|------------------------|-------------|
+| f-proof-i2 (byte vs ID conservation) | ACCEPT MEDIUM | Fixed: I2 is split into I2a byte conservation and I2b disjoint ID partition. |
+| f-proof-model-binding | MODIFY to LOW; R accepted | Fixed: Lemma 2 and the mapping table now say the declared model is an input for an external runtime, not a tool-enforced binding. |
+| f-proof-b3-mechanism | ACCEPT MEDIUM | Fixed: Lemma 3 ties I1/I3 necessity to hash-verified reads and describes `guard_output_path()` as B1 defense in depth. |
+| f-schema-not-enforced | MODIFY to LOW; R accepted | Fixed: the proof states that projection schema labels are informational and that the test asserts emission only. |
+| f-design-version | ACCEPT LOW | Fixed: `docs/DESIGN.md` version line is 0.0.2. |
+| f-quickstart-404 | ACCEPT LOW | Fixed: `docs/DEPLOYMENT.md` and the publish sequence push and verify the signed tag before deploying. |
+| f-legacy-test-coverage | ACCEPT LOW | Fixed: the legacy-schema test now asserts `verify` and `report` as well as `project`. |
+| C-MISSED-01 (append attributed to I2) | ACCEPT LOW; `DISAGREE_EVIDENCE` sustained | Fixed: post-projection appends are attributed to I3 derivation identity, not I2 byte balance. |
+| C-MISSED-02 (deploy tag gate) | ACCEPT LOW | Fixed alongside f-quickstart-404. |
+
+An independent re-review of this fix batch is required before publication.

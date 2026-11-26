@@ -1,6 +1,6 @@
 # COMPACTATION.md - Agent Compaction Strategy Standard
 
-Version 0.0.1 · Canonical source: https://github.com/awdemos/compactation
+Version 0.0.2 · Canonical source: https://github.com/awdemos/compactation
 · Site: https://compactation.dev
 · License: MIT (https://github.com/awdemos/compactation/blob/main/LICENSE) -
   copy this file into your repo, modify it, and ship it under your own terms;

@@ -9,10 +9,11 @@ consequential claim is rehydrated from exact bytes before it is used.
 - [COMPACTATION.md](./COMPACTATION.md) - the canonical agent-readable contract you copy into your repo
 - [skill/compactation/SKILL.md](./skill/compactation/SKILL.md) - the installable skill
 - [tools/compactation.py](./tools/compactation.py) - a dependency-free reference CLI for the operations contract
-- [tests/](./tests/) - 50 unit tests for the reference CLI
+- [tests/](./tests/) - 52 unit tests for the reference CLI
 - [examples/demo.py](./examples/demo.py) - a reproducible noisy-log walkthrough
 - [docs/DESIGN.md](./docs/DESIGN.md) - the design spec behind the standard
 - [docs/TRACEABILITY.md](./docs/TRACEABILITY.md) - rule-to-implementation matrix
+- [docs/BOUNDEDNESS-PROOF.md](./docs/BOUNDEDNESS-PROOF.md) - proof that bounded authority, budgets, and paths are necessary for the skill's correctness
 - [docs/VALIDATION.md](./docs/VALIDATION.md) - experiment plan for the performance expectation
 - [ADVERSARIAL_REVIEW.md](./ADVERSARIAL_REVIEW.md) - the review standard this repo holds itself to
 - [CONTRIBUTING.md](./CONTRIBUTING.md) - governance: issues before PRs, verified commits, NCO signoff
@@ -37,13 +38,13 @@ Never present it as a measured result, and never drop evidence to chase it.
 ## Quickstart
 
 ```sh
-curl -fsSL -O https://raw.githubusercontent.com/awdemos/compactation/v0.0.1/COMPACTATION.md
+curl -fsSL -O https://raw.githubusercontent.com/awdemos/compactation/v0.0.2/COMPACTATION.md
 ```
 
 Place `COMPACTATION.md` at the repository root, next to `AGENTS.md` or
 `README.md`. Keep every rule above the `## Repo-specific rules` heading intact
 and fill that section with checkable rules derived from your own repo. The
-quickstart pins to the signed `v0.0.1` tag; verify it with `git tag -v v0.0.1`.
+quickstart pins to the signed `v0.0.2` tag; verify it with `git tag -v v0.0.2`.
 Use the tag URL, not `main`, because branch content can be cached and moved.
 
 ## Install the skill
@@ -115,7 +116,7 @@ UNVALIDATED.
 Every release is tagged and signed. Verify one with:
 
 ```sh
-git tag -v v0.0.1
+git tag -v v0.0.2
 ```
 
 SHA-256 checksums for tracked release files are in `CHANGELOG.md`. A
@@ -133,6 +134,10 @@ has yet had an independent signoff, and that limitation is recorded in
 `docs/TRACEABILITY.md` rather than presented as a completed control.
 
 ## Version
+
+0.0.2: follow-up release adding `docs/BOUNDEDNESS-PROOF.md`, v0.0.2 version
+alignment, legacy-policy compatibility, and expanded compatibility tests. The
+seven protocol rules and the operations contract are unchanged.
 
 0.0.1: first public release of the corrected standard, installable skill,
 reference CLI, test suite, validation plan, and static site. It tightens

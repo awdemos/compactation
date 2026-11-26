@@ -26,8 +26,9 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-SCHEMA = "compactation/0.0.1"
-VERSION = "0.0.1"
+SCHEMA = "compactation/0.0.2"
+VERSION = "0.0.2"
+POLICY_SCHEMAS = {"compactation/policy/0.0.2", "compactation/policy/0.0.1"}
 ID_RE = re.compile(r"^[0-9a-f]{64}$")
 
 SECRET_PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
@@ -393,9 +394,11 @@ def safe_redact_pattern(pattern_text: str) -> bool:
 
 
 def validate_policy(policy: Any) -> dict[str, Any]:
-    if not isinstance(policy, dict) or policy.get("schema") != "compactation/policy/0.0.1":
+    if not isinstance(policy, dict) or policy.get("schema") not in POLICY_SCHEMAS:
         raise CompactationError(
-            "policy must be an object with schema 'compactation/policy/0.0.1'", EXIT_INPUT
+            "policy must be an object with schema 'compactation/policy/0.0.2' "
+            "or the legacy 'compactation/policy/0.0.1'",
+            EXIT_INPUT,
         )
     for key, default in (
         ("keep_ids", []),
